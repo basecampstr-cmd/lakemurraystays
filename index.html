@@ -272,6 +272,20 @@ footer a:hover{color:var(--gold)}
  .chips a{flex:0 0 auto}
  .gb-head .cnt{margin-left:0}
 }
+
+.lmslider{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);background:var(--navy)}
+.lmslides{position:relative;width:100%;aspect-ratio:21/9}
+.lmslide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .9s ease;pointer-events:none}
+.lmslide.is-active{opacity:1;pointer-events:auto}
+.lmslide img{width:100%;height:100%;object-fit:cover;display:block}
+.lmslide figcaption{position:absolute;left:22px;bottom:22px;right:22px;color:#fff;font-size:1.15rem;font-weight:600;text-shadow:0 2px 12px rgba(0,0,0,.6);font-family:'Playfair Display',Georgia,serif}
+.lmslider::after{content:"";position:absolute;left:0;right:0;bottom:0;height:45%;background:linear-gradient(to top,rgba(6,20,24,.75),transparent);pointer-events:none}
+.lmnav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:999px;border:none;background:rgba(255,255,255,.85);color:var(--navy);font-size:24px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.lmnav:hover{background:#fff}.lmprev{left:14px}.lmnext{right:14px}
+.lmdots{position:absolute;left:0;right:0;bottom:14px;z-index:3;display:flex;gap:8px;justify-content:center}
+.lmdots button{width:9px;height:9px;border-radius:999px;border:none;background:rgba(255,255,255,.5);cursor:pointer;padding:0;transition:width .2s}
+.lmdots button.is-active{background:#fff;width:22px}
+@media(max-width:640px){.lmslides{aspect-ratio:4/3}.lmslide figcaption{font-size:1rem;left:16px;bottom:16px}}
 </style>
 </head>
 <body>
@@ -381,13 +395,17 @@ footer a:hover{color:var(--gold)}
       <h2>A lake built for the way people want to travel</h2>
       <p>Boating, fishing, island beaches, birds by the hundred-thousand, and sunsets that empty the marina bars onto the docks.</p>
     </div>
-    <div class="gallery-grid">
-      <div class="gtile"><img src="https://assets.hospitable.com/property_images/2161510/HoK5jy8aP4uMGmwloWhVEZpv4IUukLhCYpMgr0cZ.jpg" alt="Dock at sunset" onerror="this.style.opacity=.001"><span class="tag">Waterfront Docks</span></div>
-      <div class="gtile"><img src="https://assets.hospitable.com/property_images/1273108/XhaWNnqThbJX49qqOHgjAcuK2NYPX956XV8wd2TG.jpg" alt="Bass fishing" onerror="this.style.opacity=.001"><span class="tag">Trophy Fishing</span></div>
-      <div class="gtile"><img src="https://assets.hospitable.com/property_images/1273108/rGvhSbDZrYgbq46OldoDujhQMXO0yLhxFA4MR7Ua.jpg" alt="Pontoon boating" onerror="this.style.opacity=.001"><span class="tag">Boating & Pontoons</span></div>
-      <div class="gtile"><img src="https://assets.hospitable.com/property_images/2080462/8gLe3QYzQdqXNJ0EpcbFFA2xlRa5iFoMIF3WuRuy.jpg" alt="Sandy island beach" onerror="this.style.opacity=.001"><span class="tag">Island Beaches</span></div>
-      <div class="gtile"><img src="https://assets.hospitable.com/property_images/2305981/MxZ38Xs4gLd1shSJgz9pteVpxlxFd7COj6LrE7EZ.jpg" alt="Forested cove" onerror="this.style.opacity=.001"><span class="tag">Quiet Coves</span></div>
-      <div class="gtile"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/20260620_purple_martin_iroquoi_nwr_PD08616.jpg?width=1000" alt="Purple martins at dusk" onerror="this.style.opacity=.001"><span class="tag">Bomb Island Birds</span></div>
+    <div class="lmslider" id="lmslider" aria-label="Lake Murray photo slider">
+      <div class="lmslides">
+        <figure class="lmslide is-active"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Lake_Murray4.JPG/1280px-Lake_Murray4.JPG" alt="Sunset over Lake Murray" loading="eager"><figcaption>Sunsets that empty the marina bars onto the docks</figcaption></figure>
+        <figure class="lmslide"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Murray_-_panoramio_(1).jpg?width=1280" alt="Dock and pier at sunset on Lake Murray" loading="lazy"><figcaption>Docks and piers up and down 650 miles of shoreline</figcaption></figure>
+        <figure class="lmslide"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Murray,_SC.jpg?width=1280" alt="Open water at sunset on Lake Murray" loading="lazy"><figcaption>50,000 acres of open water, minutes from Columbia</figcaption></figure>
+        <figure class="lmslide"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c0/Lake_murray_willow.jpg" alt="Still cove on Lake Murray at dusk" loading="lazy"><figcaption>Still mornings in quiet, forested coves</figcaption></figure>
+        <figure class="lmslide"><img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Lake_Murray_B0078.jpg" alt="Dreher Shoals Dam on Lake Murray at sunset" loading="lazy"><figcaption>Dreher Shoals Dam — where Lake Murray begins</figcaption></figure>
+      </div>
+      <button class="lmnav lmprev" type="button" aria-label="Previous photo">‹</button>
+      <button class="lmnav lmnext" type="button" aria-label="Next photo">›</button>
+      <div class="lmdots"></div>
     </div>
   </div>
 </section>
@@ -497,8 +515,8 @@ footer a:hover{color:var(--gold)}
       </div>
       <div class="slider-hint">← swipe for more →</div>
       <div class="lgrid">
-        <a class="lcard cat-attractions" href="https://www.google.com/maps/search/?api=1&amp;query=Dreher%20Island%20State%20Park%20SC" target="_blank" rel="noopener"><div class="lcard-img"><span class="ph-ic">🏝️</span><img src="https://assets.hospitable.com/property_images/1806592/zgZUJ8r5wPWgNCZW8IHkk1JGTfMi0b4QshRuHpC3.jpg" alt="Dreher Island State Park" loading="lazy" onerror="this.remove()"></div><div class="lcard-body"><div class="meta">Chapin · 348 acres</div><h4>Dreher Island State Park</h4><p>Three islands linked by bridges with 12 miles of shoreline — sandy beach swimming, kayak &amp; water-toy rentals, trails, playgrounds, a camp store, and lakeside villas and cabins.</p><div class="lcard-foot"><span class="pill gold">State park</span><span class="maplink">Map ↗</span></div></div></a>
-        <a class="lcard cat-attractions" href="https://www.google.com/maps/search/?api=1&amp;query=Lake%20Murray%20Dam%20Walkway%20SC" target="_blank" rel="noopener"><div class="lcard-img"><span class="ph-ic">🚶</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Asheville_Post_Card_Co._C57_-_Saluda_Dam_and_Lake_Murray,_Near_Columbia,_South_Carolina_front.jpg?width=1000" alt="Dreher Shoals Dam Park & Walkway" loading="lazy" onerror="this.remove()"></div><div class="lcard-body"><div class="meta">Irmo / Lexington</div><h4>Dreher Shoals Dam Park &amp; Walkway</h4><p>A 1.7-mile walkway along the dam for walkers, joggers, and cyclists — historical markers, a beach area, a love-lock gate, and paddling launch ($5 access).</p><div class="lcard-foot"><span class="pill">Walk · Beach</span><span class="maplink">Map ↗</span></div></div></a>
+        <a class="lcard cat-attractions" href="https://www.google.com/maps/search/?api=1&amp;query=Dreher%20Island%20State%20Park%20SC" target="_blank" rel="noopener"><div class="lcard-img"><span class="ph-ic">🏝️</span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Lake_Murray4.JPG/1280px-Lake_Murray4.JPG" alt="Dreher Island State Park" loading="lazy" onerror="this.remove()"></div><div class="lcard-body"><div class="meta">Chapin · 348 acres</div><h4>Dreher Island State Park</h4><p>Three islands linked by bridges with 12 miles of shoreline — sandy beach swimming, kayak &amp; water-toy rentals, trails, playgrounds, a camp store, and lakeside villas and cabins.</p><div class="lcard-foot"><span class="pill gold">State park</span><span class="maplink">Map ↗</span></div></div></a>
+        <a class="lcard cat-attractions" href="https://www.google.com/maps/search/?api=1&amp;query=Lake%20Murray%20Dam%20Walkway%20SC" target="_blank" rel="noopener"><div class="lcard-img"><span class="ph-ic">🚶</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Murray,_SC.jpg?width=1280" alt="Dreher Shoals Dam Park & Walkway" loading="lazy" onerror="this.remove()"></div><div class="lcard-body"><div class="meta">Irmo / Lexington</div><h4>Dreher Shoals Dam Park &amp; Walkway</h4><p>A 1.7-mile walkway along the dam for walkers, joggers, and cyclists — historical markers, a beach area, a love-lock gate, and paddling launch ($5 access).</p><div class="lcard-foot"><span class="pill">Walk · Beach</span><span class="maplink">Map ↗</span></div></div></a>
         <a class="lcard cat-attractions" href="https://www.google.com/maps/search/?api=1&amp;query=Bomb%20Island%20Lake%20Murray%20SC" target="_blank" rel="noopener"><div class="lcard-img"><span class="ph-ic">🐦</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/20260620_purple_martins_iroquois_nwr_PD08718.jpg?width=1000" alt="Bomb Island Purple Martins" loading="lazy" onerror="this.remove()"></div><div class="lcard-body"><div class="meta">Summer evenings</div><h4>Bomb Island Purple Martins</h4><p>The largest — and oldest — purple-martin sanctuary in North America. Hundreds of thousands of birds swirl onto the island at dusk; naturalist-led boat tours run all summer.</p><div class="lcard-foot"><span class="pill gold">Wildlife</span><span class="maplink">Map ↗</span></div></div></a>
         <a class="lcard cat-attractions" href="https://www.google.com/maps/search/?api=1&amp;query=Saluda%20Shoals%20Park%20Columbia%20SC" target="_blank" rel="noopener"><div class="lcard-img"><span class="ph-ic">🌲</span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Saluda_River_Bridge.jpg/1280px-Saluda_River_Bridge.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Saluda Shoals Park" loading="lazy" onerror="this.remove()"></div><div class="lcard-body"><div class="meta">Columbia · Saluda River</div><h4>Saluda Shoals Park</h4><p>A riverfront park just below the lake with trails, a splash pad, river paddling, and an environmental education center.</p><div class="lcard-foot"><span class="pill">Park</span><span class="maplink">Map ↗</span></div></div></a>
         <a class="lcard cat-attractions" href="https://www.google.com/maps/search/?api=1&amp;query=Riverbanks%20Zoo%20and%20Garden%20Columbia%20SC" target="_blank" rel="noopener"><div class="lcard-img"><span class="ph-ic">🦒</span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Riverbanks_Zoo_and_Garden_Bog_Garden_July_2024.jpg/1280px-Riverbanks_Zoo_and_Garden_Bog_Garden_July_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Riverbanks Zoo & Garden" loading="lazy" onerror="this.remove()"></div><div class="lcard-body"><div class="meta">Columbia</div><h4>Riverbanks Zoo &amp; Garden</h4><p>One of the nation's top zoos and botanical gardens — a can't-miss family day trip about 20 minutes from the lake.</p><div class="lcard-foot"><span class="pill">Family</span><span class="maplink">Map ↗</span></div></div></a>
@@ -667,5 +685,15 @@ footer a:hover{color:var(--gold)}
 </footer>
 
 <script src="https://link.basecampgetaways.com/js/form_embed.js"></script>
+<script>
+(function(){var root=document.getElementById('lmslider');if(!root)return;var sl=[].slice.call(root.querySelectorAll('.lmslide'));var dots=root.querySelector('.lmdots');var i=0,t;
+sl.forEach(function(_,k){var b=document.createElement('button');b.type='button';if(k===0)b.className='is-active';b.setAttribute('aria-label','Go to photo '+(k+1));b.onclick=function(){go(k);reset();};dots.appendChild(b);});
+var db=[].slice.call(dots.children);
+function go(n){sl[i].classList.remove('is-active');db[i].classList.remove('is-active');i=(n+sl.length)%sl.length;sl[i].classList.add('is-active');db[i].classList.add('is-active');}
+function next(){go(i+1);}function reset(){clearInterval(t);t=setInterval(next,5000);}
+root.querySelector('.lmnext').onclick=function(){next();reset();};root.querySelector('.lmprev').onclick=function(){go(i-1);reset();};
+root.addEventListener('mouseenter',function(){clearInterval(t);});root.addEventListener('mouseleave',reset);reset();
+})();
+</script>
 </body>
 </html>
