@@ -206,6 +206,113 @@ footer a{color:#a9c3c5;font-size:.92rem;display:block;padding:.22rem 0}footer a:
 .asset .tag{color:var(--teal2);font-weight:600;letter-spacing:.06em}
 .asset .big{font-family:'Playfair Display';font-size:clamp(1.7rem,3.6vw,2.5rem);color:var(--navy);max-width:24ch;margin:.5rem auto .4rem;font-weight:700}
 .asset p.sub{color:var(--muted);max-width:60ch;margin:0 auto}
+
+/* ===== LAUNCH PACKAGE PROMO (adapted to Lake Murray brand) ===== */
+:root{
+  --forest:#0c2a30; --forest-2:#12525a; --gold-dk:#b9862a; --gold-lt:#f0d9a6;
+  --cream:#f5f0e6; --ink-soft:#5c6b70; --r:14px; --r-lg:20px;
+  --shadow-lg:0 24px 60px rgba(12,42,48,.20);
+}
+/* top ribbon */
+.launch-ribbon{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;
+  background:linear-gradient(90deg,var(--gold-dk),var(--gold));color:#231a06;
+  padding:11px 22px;text-align:center;line-height:1.35;border-bottom:2px solid var(--gold-lt)}
+.launch-ribbon:hover{background:linear-gradient(90deg,var(--gold),var(--gold-lt))}
+.launch-ribbon .lr-badge{font-family:'Playfair Display',serif;font-weight:800;font-size:20px;letter-spacing:.02em;
+  background:var(--forest);color:var(--gold-lt);padding:3px 12px;border-radius:8px;flex:none}
+.launch-ribbon .lr-txt{font-family:'Inter',sans-serif;font-size:14.5px;font-weight:500;max-width:60ch}
+.launch-ribbon .lr-txt b{font-weight:700}
+.launch-ribbon .lr-cta{font-family:'Inter',sans-serif;font-weight:700;font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;background:var(--forest);color:#fff;padding:9px 18px;border-radius:100px;flex:none;white-space:nowrap}
+.launch-ribbon:hover .lr-cta{background:var(--forest-2)}
+
+/* dedicated section */
+.section.launch{background:radial-gradient(1200px 500px at 50% -10%,#12525a 0%,var(--forest) 55%);color:#fff}
+.section.launch .section-head h2{color:#fff}
+.section.launch .section-head .eyebrow{color:var(--gold-lt)}
+.section.launch .section-head p{color:rgba(255,255,255,.85)}
+.lp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:900px;margin:0 auto}
+.lp-card{background:#fff;border-radius:var(--r-lg);padding:30px 26px 28px;position:relative;
+  border:1px solid var(--line);box-shadow:var(--shadow-lg);display:flex;flex-direction:column}
+.lp-card .lp-ic{width:52px;height:52px;border-radius:13px;background:var(--cream);
+  display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:16px}
+.lp-card h3{font-size:1.32rem;margin-bottom:9px;color:var(--forest)}
+.lp-card p{font-size:14.5px;color:var(--ink-soft);flex:1}
+.lp-card .lp-val{margin-top:18px;font-family:'Inter',sans-serif;font-weight:700;font-size:12px;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--gold-dk);
+  background:var(--cream);border:1px solid var(--gold-lt);border-radius:100px;
+  padding:8px 16px;text-align:center;align-self:flex-start}
+.lp-note{max-width:760px;margin:34px auto 0;text-align:center}
+.lp-note .btn{margin-bottom:16px}
+.lp-fine{font-size:12.5px;color:rgba(255,255,255,.62);max-width:640px;margin:0 auto;line-height:1.6}
+
+/* form tie-in line */
+.form-tiein{max-width:680px;margin:0 auto 22px;background:rgba(255,255,255,.08);
+  border:1px solid rgba(240,217,166,.32);border-radius:var(--r);padding:16px 22px;
+  text-align:center;font-size:15px;color:#fff}
+.form-tiein b{color:var(--gold-lt)}
+
+/* sticky bottom CTA (mobile) */
+.sticky-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
+  align-items:center;justify-content:space-between;gap:12px;
+  background:var(--forest);border-top:2px solid var(--gold);
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+  box-shadow:0 -8px 24px rgba(12,42,48,.30);transition:transform .3s}
+.sticky-cta .sc-txt{font-family:'Inter',sans-serif;font-size:13px;line-height:1.25;color:#fff}
+.sticky-cta .sc-txt b{color:var(--gold-lt);font-weight:700}
+.sticky-cta .sc-btn{flex:none;font-family:'Inter',sans-serif;font-weight:700;font-size:12px;
+  letter-spacing:.05em;text-transform:uppercase;background:var(--gold);color:#231a06;
+  padding:10px 16px;border-radius:100px;white-space:nowrap}
+.sticky-cta.hide{transform:translateY(130%)}
+
+/* desktop floating side rail */
+.side-rail{display:none;position:fixed;right:22px;bottom:22px;z-index:60;width:308px;
+  background:var(--forest);color:#fff;border:1px solid rgba(240,217,166,.35);border-radius:16px;
+  padding:20px 18px 16px;box-shadow:0 22px 54px rgba(12,42,48,.4);
+  opacity:0;transform:translateY(16px);transition:opacity .3s,transform .3s;pointer-events:none}
+.side-rail.show{opacity:1;transform:none;pointer-events:auto}
+.side-rail .sr-badge{position:absolute;top:-15px;left:18px;background:var(--gold);color:#231a06;
+  font-family:'Playfair Display',serif;font-weight:800;font-size:16px;letter-spacing:.02em;padding:4px 13px;border-radius:8px}
+.side-rail .sr-close{position:absolute;top:9px;right:11px;background:transparent;border:none;
+  color:rgba(255,255,255,.55);font-size:19px;line-height:1;cursor:pointer;padding:2px 6px}
+.side-rail .sr-close:hover{color:#fff}
+.side-rail .sr-body{margin:10px 0 15px}
+.side-rail .sr-body b{font-family:'Playfair Display',serif;font-weight:700;font-size:1.18rem;color:#fff;display:block;margin-bottom:5px}
+.side-rail .sr-body span{font-size:13.5px;color:rgba(255,255,255,.82);line-height:1.5}
+.side-rail .sr-cta{display:block;text-align:center;background:var(--gold);color:#231a06;
+  font-family:'Inter',sans-serif;font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;
+  padding:12px;border-radius:100px;transition:background .2s}
+.side-rail .sr-cta:hover{background:var(--gold-lt)}
+@media(min-width:901px){.side-rail{display:block}}
+
+@media(max-width:900px){
+  .lp-grid{grid-template-columns:1fr}
+  .launch-ribbon .lr-cta{width:100%;max-width:280px}
+}
+@media(max-width:700px){
+  .sticky-cta{display:flex}
+  body{padding-bottom:70px}
+  .launch-ribbon{gap:10px;padding:12px 16px}
+  .launch-ribbon .lr-badge{font-size:18px}
+  .launch-ribbon .lr-txt{font-size:13.5px}
+}
+
+/* ===== MOBILE SWIPE SLIDERS ===== */
+@media(max-width:768px){
+  .diff-grid,.steps,.lp-grid{
+    display:flex;flex-wrap:nowrap;overflow-x:auto;gap:16px;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:thin;
+    margin:0 -22px;padding:6px 22px 18px}
+  .diff-grid>*,.steps>*,.lp-grid>*{flex:0 0 80%;scroll-snap-align:start}
+  .diff-grid::-webkit-scrollbar,.steps::-webkit-scrollbar,.lp-grid::-webkit-scrollbar{height:6px}
+  .diff-grid::-webkit-scrollbar-thumb,.steps::-webkit-scrollbar-thumb,.lp-grid::-webkit-scrollbar-thumb{background:var(--gold);border-radius:100px}
+  .diff-grid::-webkit-scrollbar-track,.steps::-webkit-scrollbar-track,.lp-grid::-webkit-scrollbar-track{background:transparent}
+  .swipe-hint{display:block;text-align:center;font-family:'Inter',sans-serif;font-weight:700;font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dk);margin:-14px 0 16px}
+  .section.launch .swipe-hint{color:var(--gold-lt)}
+}
+.swipe-hint{display:none}
+
 </style>
 </head>
 <body>
@@ -228,6 +335,14 @@ footer a{color:#a9c3c5;font-size:.92rem;display:block;padding:.22rem 0}footer a:
     <a href="#results">Lake Hartwell Results</a><a href="#home-watch">Home Watch</a><a href="#marketing">Marketing</a><a href="#how">How It Works</a><a href="#faq">FAQ</a><a href="#contact">Free Revenue Analysis</a>
   </div>
 </header>
+
+<!-- LAUNCH PACKAGE RIBBON -->
+<a href="#launch" class="launch-ribbon" aria-label="Choose your five thousand dollar Basecamp Launch Package">
+  <span class="lr-badge">$5,000</span>
+  <span class="lr-txt"><b>Choose your Basecamp Launch Package.</b> See if your home qualifies — get your free income projection &amp; package options.</span>
+  <span class="lr-cta">See the packages →</span>
+</a>
+
 
 <!-- HERO -->
 <section class="hero" style="padding:0">
@@ -334,6 +449,7 @@ footer a{color:#a9c3c5;font-size:.92rem;display:block;padding:.22rem 0}footer a:
       <h2>Demand we build — not demand we rent</h2>
       <p>Anyone can list a home on Airbnb and hope. We build our own audience for Lake Murray, so your calendar fills from channels the big-box managers don't have.</p>
     </div>
+    <div class="swipe-hint">Swipe →</div>
     <div class="diff-grid">
       <div class="diff"><div class="ic">🌐</div><h4>Our own booking site</h4><p><b>lakemurraystays.com</b> drives direct bookings that skip the platform fees — and builds a guest list that belongs to you, not to Airbnb.</p></div>
       <div class="diff"><div class="ic">🔎</div><h4>Ranks for "things to do on Lake Murray"</h4><p>We publish an SEO-optimized Lake Murray guide built to capture travelers already searching to visit the lake — then funnel them straight to your home.</p></div>
@@ -354,6 +470,7 @@ footer a{color:#a9c3c5;font-size:.92rem;display:block;padding:.22rem 0}footer a:
       <h2>How it works</h2>
       <p>No pressure, no lock-in. Four simple steps from "just curious" to earning more.</p>
     </div>
+    <div class="swipe-hint">Swipe →</div>
     <div class="steps">
       <div class="step"><div class="num">1</div><h4>Conversation</h4><p>A quick, no-obligation call about your home, your goals, and how you use it.</p></div>
       <div class="step"><div class="num">2</div><h4>Revenue estimate</h4><p>We send a custom projection of what your Lake Murray home could actually earn.</p></div>
@@ -371,6 +488,7 @@ footer a{color:#a9c3c5;font-size:.92rem;display:block;padding:.22rem 0}footer a:
       <h2>We think like asset owners, not booking agents</h2>
       <p>Everything we do is built around one goal: more revenue for you, less work for you, and a home cared for like our own.</p>
     </div>
+    <div class="swipe-hint">Swipe →</div>
     <div class="diff-grid">
       <div class="diff"><div class="ic">📍</div><h4>Local Operations</h4><p>Boots on the ground at the lake — a real care team, not a call center three states away.</p></div>
       <div class="diff"><div class="ic">🏆</div><h4>Superhost Standard</h4><p>Hospitality that earns and defends five-star ratings and repeat guests.</p></div>
@@ -423,6 +541,49 @@ footer a{color:#a9c3c5;font-size:.92rem;display:block;padding:.22rem 0}footer a:
   </div>
 </section>
 
+
+<!-- LAUNCH PACKAGE -->
+<section class="section launch" id="launch">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">A Limited Welcome Offer for New Owners</div>
+      <h2>Up to $5,000 to launch your Lake Murray home right.</h2>
+      <p>When you list a qualifying home with us, you choose one Launch Package — our investment in getting your property earning at its full potential from day one. Pick the one that fits your home.</p>
+    </div>
+    <div class="swipe-hint">Swipe packages →</div>
+    <div class="lp-grid">
+      <div class="lp-card">
+        <div class="lp-ic">🌿</div>
+        <h3>Lawn + Property Care</h3>
+        <p>Routine lawn &amp; grounds maintenance all season, plus professional hot tub deep-cleaning &amp; maintenance — and dock moving as Lake Murray levels rise and fall. One flexible allowance; you direct where it goes.</p>
+        <span class="lp-val">Up to $5,000 value</span>
+      </div>
+      <div class="lp-card">
+        <div class="lp-ic">📈</div>
+        <h3>Performance Guarantee</h3>
+        <p>We put up to $5,000 of our own management fees behind the annual revenue target we agree on. If we miss it during the performance period, we credit the shortfall back to you. The projection isn't just a promise — it's backed.</p>
+        <span class="lp-val">Up to $5,000 value</span>
+      </div>
+      <div class="lp-card">
+        <div class="lp-ic">📸</div>
+        <h3>Basecamp Makeover</h3>
+        <p>Professional photography, a listing redesign, and a hands-on amenity &amp; staging consultation to make your home stand out and convert more lookers into bookings.</p>
+        <span class="lp-val">Up to $5,000 value</span>
+      </div>
+      <div class="lp-card">
+        <div class="lp-ic">🛠️</div>
+        <h3>Property Upgrade Credit</h3>
+        <p>Up to $5,000 back toward one approved, revenue-producing improvement — a hot tub, game room, outdoor living space, or the amenity most likely to lift your nightly rate.</p>
+        <span class="lp-val">Up to $5,000 value</span>
+      </div>
+    </div>
+    <div class="lp-note">
+      <a href="#contact" class="btn btn-gold">Get my free projection &amp; package options</a>
+      <p class="lp-fine">You choose one package when you sign your management agreement. Available to qualifying properties projected to earn $85,000+ in annual gross booking revenue. Promotional value up to $5,000; terms apply. Start with a free, no-obligation income projection below to see if your home qualifies.</p>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="wrap contact-grid">
@@ -441,7 +602,8 @@ footer a{color:#a9c3c5;font-size:.92rem;display:block;padding:.22rem 0}footer a:
         <a class='btn btn-ghost' href='/'>Back to lakemurraystays.com →</a>
       </div>
     </div>
-    <div class="form-card" id="revenue-analysis">
+    <div class="form-tiein">Fill this out to get <b>two things back</b>: (1) your complimentary income projection, and (2) your <b>$5,000 Launch Package</b> options.</div>
+      <div class="form-card" id="revenue-analysis">
       <div class="fc-head"><h3>Free Revenue Analysis</h3><p>We'll reply with a custom projection for your Lake Murray home.</p></div>
       <iframe class="revform" src="https://link.basecampgetaways.com/widget/form/qVfRSODy12KKV9R82IZs" style="width:100%;border:none;border-radius:4px" id="inline-qVfRSODy12KKV9R82IZs" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value="" data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate" data-deactivation-value="" data-form-name="Basecamp Getaways Management" data-height="892" data-layout-iframe-id="inline-qVfRSODy12KKV9R82IZs" data-form-id="qVfRSODy12KKV9R82IZs" title="Free Revenue Estimate"></iframe>
       <div class="form-fallback">Form not loading? <a href="https://link.basecampgetaways.com/widget/form/qVfRSODy12KKV9R82IZs" target="_blank" rel="noopener" style="color:var(--teal2);font-weight:600">Open the request form in a new tab →</a></div>
@@ -481,6 +643,45 @@ footer a{color:#a9c3c5;font-size:.92rem;display:block;padding:.22rem 0}footer a:
     </div>
   </div>
 </footer>
+
+<!-- DESKTOP FLOATING SIDE RAIL -->
+<div class="side-rail" id="sideRail" role="complementary" aria-label="Basecamp Launch Package offer">
+  <button class="sr-close" id="srClose" aria-label="Dismiss offer">&times;</button>
+  <div class="sr-badge">$5,000</div>
+  <div class="sr-body">
+    <b>Basecamp Launch Package</b>
+    <span>See if your home qualifies — get a free income projection &amp; your package options.</span>
+  </div>
+  <a href="#contact" class="sr-cta">Get my free projection →</a>
+</div>
+
+<!-- STICKY MOBILE CTA -->
+<a href="#contact" class="sticky-cta" id="stickyCta" aria-label="Get your free projection and five thousand dollar Launch Package options">
+  <span class="sc-txt"><b>$5,000 Launch Package</b><br>See if your home qualifies</span>
+  <span class="sc-btn">Free Projection →</span>
+</a>
+
+<!-- Sticky CTA visibility control -->
+<script>
+(function(){
+  var rail=document.getElementById('sideRail');
+  var sticky=document.getElementById('stickyCta');
+  var closeBtn=document.getElementById('srClose');
+  var railClosed=false;
+  if(closeBtn){closeBtn.addEventListener('click',function(){railClosed=true;if(rail)rail.classList.remove('show');});}
+  function update(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    var est=document.getElementById('contact');
+    var nearForm=false;
+    if(est){var r=est.getBoundingClientRect();nearForm=r.top < window.innerHeight*0.85 && r.bottom>0;}
+    if(rail){ if(y>560 && !nearForm && !railClosed){rail.classList.add('show');} else {rail.classList.remove('show');} }
+    if(sticky){ if(nearForm){sticky.classList.add('hide');} else {sticky.classList.remove('hide');} }
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update,{passive:true});
+  update();
+})();
+</script>
 
 <script src="https://link.basecampgetaways.com/js/form_embed.js"></script>
 </body>
