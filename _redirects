@@ -1,5 +1,9 @@
 # Serve the case-study page at the clean slug you asked for
 /lake-murray-vacation-rental-management    /lake-murray-vacation-rental-management.html    200
 
-# Owners landing page (mailer QR target)
-/owners    /owners.html    200
+# Owner mailer / QR traffic goes to the one consolidated offer page.
+# ?m= tells that page which tracking number to show and tags the GHL lead.
+# 302 (temporary) on purpose, so this is reversible.
+/owners       https://basecampgetaways.com/offer?m=murray   302
+/owners/      https://basecampgetaways.com/offer?m=murray   302
+/owners.html  https://basecampgetaways.com/offer?m=murray   302
