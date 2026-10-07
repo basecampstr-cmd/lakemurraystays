@@ -286,6 +286,9 @@ footer a:hover{color:var(--gold)}
 .lmdots button{width:9px;height:9px;border-radius:999px;border:none;background:rgba(255,255,255,.5);cursor:pointer;padding:0;transition:width .2s}
 .lmdots button.is-active{background:#fff;width:22px}
 @media(max-width:640px){.lmslides{aspect-ratio:4/3}.lmslide figcaption{font-size:1rem;left:16px;bottom:16px}}
+
+.ep-wrapper,.ep-iFrameContainer{height:auto !important;overflow:visible !important}
+iframe[data-form-id]{position:static !important;left:auto !important;top:auto !important;opacity:1 !important;visibility:visible !important;pointer-events:auto !important;width:100% !important;display:block !important}
 </style>
 </head>
 <body>
@@ -693,6 +696,41 @@ function go(n){sl[i].classList.remove('is-active');db[i].classList.remove('is-ac
 function next(){go(i+1);}function reset(){clearInterval(t);t=setInterval(next,5000);}
 root.querySelector('.lmnext').onclick=function(){next();reset();};root.querySelector('.lmprev').onclick=function(){go(i-1);reset();};
 root.addEventListener('mouseenter',function(){clearInterval(t);});root.addEventListener('mouseleave',reset);reset();
+})();
+</script>
+
+<script>
+(function () {
+  var f = document.querySelector('iframe[data-form-id]');
+  if (!f) return;
+  function floorH() { return window.innerWidth <= 820 ? 1650 : 1300; }
+  function setH(px) { f.style.setProperty('height', Math.round(px) + 'px', 'important'); }
+  function reveal() {
+    f.style.setProperty('position', 'static', 'important');
+    f.style.setProperty('left', 'auto', 'important');
+    f.style.setProperty('top', 'auto', 'important');
+    f.style.setProperty('opacity', '1', 'important');
+    f.style.setProperty('visibility', 'visible', 'important');
+    f.style.setProperty('pointer-events', 'auto', 'important');
+    f.style.setProperty('width', '100%', 'important');
+    var p = f.parentElement, g = p && p.parentElement;
+    [p, g].forEach(function (el) {
+      if (el && /ep-/.test(el.className || '')) el.style.setProperty('height', 'auto', 'important');
+    });
+  }
+  var sized = false;
+  reveal(); setH(floorH());
+  window.addEventListener('message', function (e) {
+    if (!/leadconnector|basecampgetaways/.test(e.origin || '')) return;
+    var d = typeof e.data === 'string' ? e.data : '';
+    if (d.indexOf('[iFrameSizer]') !== 0) return;
+    var m = d.match(/\[iFrameSizer\][^:]*:([0-9.]+):/);
+    if (m) { var h = parseFloat(m[1]); if (h > 500) { sized = true; setH(h + 24); } }
+    reveal();
+  }, false);
+  var t = setInterval(function () { reveal(); if (!sized) setH(floorH()); }, 400);
+  setTimeout(function () { clearInterval(t); }, 20000);
+  window.addEventListener('resize', function () { if (!sized) setH(floorH()); });
 })();
 </script>
 </body>
